@@ -1,0 +1,169 @@
+
+{% load static %}
+{% static "img" as baseUrl  %}
+
+<!DOCTYPE html>
+<html class="" lang="zxx">
+<head>
+<meta name="author" content="">
+<meta name="description" content="">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    {% block title %}
+    {% endblock %}
+</title>
+
+<!-- Favicon Icon -->
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %} ">
+<link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap-select.min.css' %}">
+<link href="{% static 'plugins/icons/css/icons.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/animate/animate.css' %}" rel="stylesheet">
+<link href="{% static 'plugins/bootstrap/css/bootsnav.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'plugins/nice-select/css/nice-select.css' %}">
+<link href="{% static 'plugins/aos-master/aos.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %} " rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&amp;display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&amp;display=swap" rel="stylesheet"> 
+</head>
+<body class="utf_skin_area">
+
+  <nav class="navbar navbar-default navbar-mobile navbar-fixed white no-background bootsnav">
+    <div class="container"> 
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="fa fa-bars"></i> </button>
+        <a class="navbar-brand" href="/"> <img src="{% static 'img/logo-light.png' %}" class="logo logo-display" alt=""> <img src="{% static 'img/logo.png' %}" class="logo logo-scrolled" alt=""> </a> 
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        
+        <ul class="nav navbar-nav navbar-right"> 
+          {% if user.is_authenticated %}
+          <li class="sign-up"><a class="btn-signup red-btn" href="accounts/register"><span class="ti-briefcase"></span>Hello, {{user.first_name}}</a></li>
+          <li class="sign-up"><a class="btn-signup red-btn" href="accounts/logout"><span class="ti-briefcase"></span>Logout</a></li>
+          {% else %}
+          <li class="br-right"><a class="btn-signup red-btn" href="javascript:void(0)" data-toggle="modal" data-target="#signin"><i class="login-icon ti-user"></i>Login</a></li>
+          <li class="sign-up"><a class="btn-signup red-btn" href="accounts/register"><span class="ti-briefcase"></span>Register</a></li>
+         <!-- <li class="sign-up"><a class="btn-signup red-btn" href="accounts/login"><span class="login-icon ti-user"></span>Login</a></li>-->
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+    {% block content %}
+
+    {% endblock %}
+    
+    {% include 'login.html' %}
+</body>
+<footer class="footer">
+    <div class="container"> 
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <a href="index-2.html"><img class="footer-logo" src="assets/img/logo.png" alt=""></a>
+          <p>Lorem Ipsum is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text ever since.</p>
+          <!-- Social Box -->
+          <div class="f-social-box">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook facebook-cl"></i></a></li>
+              <li><a href="#"><i class="fa fa-google google-plus-cl"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter twitter-cl"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram instagram-cl"></i></a></li>
+            </ul>
+          </div>        
+        </div>	
+        <div class="col-md-9 col-sm-8">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <h4>By Location</h4>
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Astrologers in Chennai</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Astrologers in Bangalore</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Astrologers in Coimbatore</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Astrologers in Hyderabad​​</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Astrologers in Kerla</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <h4>Online Advice</h4>
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Tarot readers</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Marriage Astrologers</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Money Astrologers</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Financial Astrologers</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Career Astrologers</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <h4>By Service</h4>
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Couple's Horoscope</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Indepth Horoscope</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Tamil Jathagam</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Career & Business Horoscope</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Education Horoscope</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> About Us</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Partner Us</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Contact Us</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Blog</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i> Support</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="copyright text-center">
+            <p>Copyright © 2021 Astronearyou.com. All Rights Reserved.</p>		  
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+  <div><a href="#" class="scrollup">Scroll</a></div>
+  
+  <!-- Jquery js--> 
+  <script src="{% static 'js/jquery.min.js' %} "></script> 
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+  <script src="{% static 'plugins/bootstrap/js/bootsnav.js' %}"></script> 
+  <script src="{% static 'js/viewportchecker.js' %}"></script> 
+  <script src="{% static 'js/slick.js' %}"></script> 
+  <script src="{% static 'plugins/bootstrap/js/wysihtml5-0.3.0.js' %}"></script> 
+  <script src="{% static 'plugins/bootstrap/js/bootstrap-wysihtml5.js' %}"></script> 
+  <script src="{% static 'plugins/aos-master/aos.js' %}"></script> 
+  <script src="{% static 'plugins/nice-select/js/jquery.nice-select.min.js' %}"></script> 
+  <script src="{% static 'js/custom.js' %}"></script> 
+  <script>
+      $(window).load(function() {
+        $(".page_preloader").fadeOut("slow");;
+      });
+      AOS.init();
+
+      $(document).ready(function(){
+    $("#myModal").on("show.bs.modal", function(event){
+        // Get the button that triggered the modal
+        var button = $(event.relatedTarget);
+        // Extract value from the custom data-* attribute
+        var titleData = button.data("title");				 
+        $(this).find(".modal-title").text(titleData);
+		//console.log(titleData);
+		$(this).find('input[name="Astrology_name"]').val(titleData);
+    });
+});
+  </script>
+  </body>
+  
+  <!-- Mirrored from utouchdesign.com/themes/envato/escort/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Mar 2021 07:26:20 GMT -->
+  </html>

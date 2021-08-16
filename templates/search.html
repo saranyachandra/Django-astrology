@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% static "img" as baseUrl  %}
+{% block title %}
+search
+{% endblock %}
+
+{% block content %}
+
+<div class="utf_main_banner_area" style="background-image:url('static/img/slider_bg.jpg')" data-overlay="8">
+    <div class="container">
+      <div class="col-md-8 col-sm-10">
+        <div class="caption cl-white home_two_slid">
+          <h2>Search Between More Then <span class="theme-cl">5000</span> Astrologer.</h2>
+        </div>
+            <fieldset class="utf_home_form_one">
+                <form action="search" method="get">
+                  
+                  <div class="col-md-8 col-sm-8 padd-0">
+                  <input type="text" name="search" class="form-control br-1" placeholder="Search Keywords...">
+                  </div>			
+                  <div class="col-md-4 col-sm-4 padd-0 m-clear">
+                  <button type="submit" class="btn theme-btn cl-white seub-btn">Search</button>
+                  </div>
+                </form>              
+            </fieldset>
+      </div>
+    </div>
+  </div>
+  <div>
+    {% if messages %}
+    <ul class="messages">
+        
+        <li>{{ messages }}</li>
+      
+    </ul>
+    {% endif %}
+  </div>
+<section class="padd-top-80 padd-bot-80">
+    <div class="container"> 
+     
+      <!--<ul class="nav nav-tabs nav-advance theme-bg" role="tablist">
+        <li class="nav-item active"> <a class="nav-link" data-toggle="tab" href="#recent" role="tab"> Latest Jobs</a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#" role="tab"> Recent Jobs</a> </li>
+      </ul>-->
+      <div class="tab-content"> 
+        <div class="tab-pane fade in show active" id="recent" role="tabpanel">
+          <div class="row"> 
+            {% if dests %}
+            {% for dest in dests %}
+            <!-- Single Job -->
+            <div class="col-md-3 col-sm-6">
+              <div class="utf_grid_job_widget_area"> <span class="job-type full-type">Verified</span>
+                <div class="utf_job_like">
+                  <img class="img-responsive" src="{% static 'img/ratings.jpg' %}" alt="">
+                </div>
+                <div class="u-content">
+                  <div class="avatar box-80"> <a href="#"> <img class="img-responsive" src="{{dest.img.url}}" alt=""> </a> </div>
+                   
+                  <a href="{% url 'astro_details' dest.id  %}">{{dest.name}}</a>
+                  <p class="text-muted">Exp: {{dest.exp}} Years <br /> Language:{{dest.language}}</p>                  
+                  <p><center><img class="img-responsive" src="{% static 'img/ratings.jpg' %}" alt=""></center></p>
+                </div>
+                <div class="utf_apply_job_btn_item">
+                  <a href="#" type="button" class="btn job-browse-btn btn-radius br-light"  data-toggle="modal" data-target="#myModal" data-title={{dest.name}}>Consult Now</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- Single Job -->
+            {% else %}
+            <p>No Search result. Please try another.</p>
+            {% endif  %}
+                      
+          </div>
+        </div>
+        
+        <!-- Featured Job -->
+        </div>    
+    </div>
+  </section>
+{% endblock %}

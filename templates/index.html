@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% static "img" as baseUrl  %}
+{% block title %}
+home
+{% endblock %}
+
+{% block content %}
+
+<!-- ======================= Start Navigation ===================== -->
+
+<!-- ======================= End Navigation ===================== --> 
+
+<!-- ======================= Start Banner ===================== -->
+<div class="utf_main_banner_area" style="background-image:url('static/img/slider_bg.jpg')" data-overlay="8">
+  <div class="container">
+    <div class="col-md-8 col-sm-10">
+      <div class="caption cl-white home_two_slid">
+        <h2>Search Between More Then <span class="theme-cl">5000</span> Astrologer.</h2>
+      </div>
+	  	<fieldset class="utf_home_form_one">
+		  	<form action="search" method="get">
+				
+				<div class="col-md-8 col-sm-8 padd-0">
+				<input type="text" name="search" class="form-control br-1" placeholder="Search Keywords...">
+				</div>			
+				<div class="col-md-4 col-sm-4 padd-0 m-clear">
+				<button type="submit" class="btn theme-btn cl-white seub-btn">Search</button>
+				</div>
+			</form>
+			
+	  	</fieldset>
+    </div>
+  </div>
+</div>
+<!-- ======================= End Banner ===================== --> 
+
+<!-- ================= Job start ========================= -->
+<section class="padd-top-80 padd-bot-80">
+  <div class="container"> 
+	<div>
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	  </div>
+    <!--<ul class="nav nav-tabs nav-advance theme-bg" role="tablist">
+      <li class="nav-item active"> <a class="nav-link" data-toggle="tab" href="#recent" role="tab"> Latest Jobs</a> </li>
+      <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#" role="tab"> Recent Jobs</a> </li>
+    </ul>-->
+    <div class="tab-content"> 
+      <div class="tab-pane fade in show active" id="recent" role="tabpanel">
+        <div class="row"> 
+          {% for dest in dests%}
+          <!-- Single Job -->
+          <div class="col-md-3 col-sm-6">
+            <div class="utf_grid_job_widget_area"> <span class="job-type full-type">Verified</span>
+              <div class="utf_job_like">
+               <img class="img-responsive" src="{% static 'img/ratings.jpg' %}" alt="">
+              </div>
+              <div class="u-content">
+                <div class="avatar box-80"> <a href="#"> <img class="img-responsive" src="{{dest.img.url}}" alt=""> </a> </div>
+				<a href="{% url 'astro_details' dest.id  %}">{{dest.name}}</a>			
+                <p class="text-muted">Exp: {{dest.exp}} Years <br /> Language:{{dest.language}}</p>                
+                <p><center><img class="img-responsive" src="{% static 'img/ratings.jpg' %}" alt=""></center></p>
+              </div>
+              <div class="utf_apply_job_btn_item">
+                <a href="#" type="button" class="btn job-browse-btn btn-radius br-light"  data-toggle="modal" data-target="#myModal" data-title={{dest.name}}>Consult Now</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- Single Job -->
+                    
+        </div>
+      </div>
+      
+      <!-- Featured Job -->
+      </div>    
+  </div>
+</section>
+
+<!-- ================= Category start ========================= -->
+<section class="utf_job_category_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="heading">
+          <h2>Horoscopes</h2>  
+		  <p>Choose your Moon sign and start reading your FREE Daily/Weekly/Monthly Horoscope
+Aries</p>	
+        </div>
+      </div>
+    </div>
+    <div class="row">
+		<div class="col-md-12">
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon"> <img class="img-responsive" src="{% static 'img/Aries.png' %}" alt=""> </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Aries</h4>				
+					</div>
+				  </div>			
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon"> <img class="img-responsive" src="{% static 'img/Taurus.png' %}" alt=""> </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Taurus</h4>
+					
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon"> <img class="img-responsive" src="{% static 'img/Gemini.png' %}" alt=""> </div>
+					<div class="category-detail utf_category_desc_text">
+					  <h4>Gemini</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Cancer.png' %} " alt=""> </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Cancer</h4>
+					 
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon"> <img class="img-responsive" src="{% static 'img/Leo.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Leo</h4>
+					 
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Virgo.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text">
+					  <h4>Virgo</h4>
+					 
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Libra.png' %}" alt=""> </div>
+					<div class="category-detail utf_category_desc_text">
+					  <h4>Libra</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		  <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Scorpio.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Scorpio</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+          <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Sagittarius.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Sagittarius</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+          <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Capricorn.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Capricorn</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+          <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Aquarius.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Aquarius</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+          <div class="col-md-2 col-sm-2">
+			<a href="#" title="">
+				<div class="utf_category_box_area">
+				  <div class="utf_category_desc">
+					<div class="utf_category_icon">  <img class="img-responsive" src="{% static 'img/Pisces.png' %}" alt="">  </div>
+					<div class="category-detail utf_category_desc_text"> 
+					  <h4>Pisces</h4>
+					  
+					</div>
+				  </div>
+				</div>
+			</a>
+		  </div>
+		 
+	  </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter theme-bg" style="background-image:url(assets/img/bg-new.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="heading light">
+          <h2>Subscribe Our Newsletter!</h2>
+          <p>Lorem Ipsum is simply dummy text printing and type setting industry Lorem Ipsum been industry standard dummy text ever since when unknown printer took a galley.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+        <div class="newsletter-box text-center">
+          <div class="input-group"> <span class="input-group-addon"><span class="ti-email theme-cl"></span></span>
+            <input type="text" class="form-control" placeholder="Enter your Email...">
+          </div>
+          <button type="button" class="btn theme-btn btn-radius btn-m">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- start model popup -->
+<div id="myModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <form action="subscribe" method="POST">
+              {% csrf_token %}
+              <div class="modal-header">
+                  <h5 class="modal-title">Modal Window</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">    
+                    <div class="form-group">
+      
+                      <input type="text" style="display:none;" name="Astrology_name"   value="">
+                      <label class="control-label">Name:</label>
+                      <input type="text" name="name" class="form-control" required>
+                  </div>
+                    <div class="form-group">
+                      <label class="control-label">Phone:</label>
+                      <input type="number" name="phone" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Email:</label>
+                      <input type="email" name="email" class="form-control" required >
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Message:</label>
+                      <textarea class="form-control" name="msg" required></textarea>
+                  </div>                        
+              </div>
+              <div class="modal-footer">
+                  
+                  <button type="submit" name="subscribe" class="btn btn-primary">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+<!-- ================= footer start ========================= -->
